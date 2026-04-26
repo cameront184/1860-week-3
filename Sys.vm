@@ -18,7 +18,7 @@ function Sys.min 0
     push argument 0         // if arg0 <= arg1 then we return arg0
     return
 
-label MAX_ARG0_GREATER
+label MIN_ARG0_GREATER
     push argument 1         // if arg0 > arg1 then return arg1
     return
 
