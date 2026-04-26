@@ -63,9 +63,99 @@ label ARG0_GREATER
 // stack, so that, from the point of view of the callee, the
 // result is at the top of the stack.
 //
+
 function Sys.range 2
-    // Your implementation goes here.
+// if n > 1 then continue, anything else return 0
+    push argument 1
+    push constant 1
+    gt
+    if-goto START
+
+    push constant 0
     return
+
+label START
+
+// initialises the min value to the first element of the array
+// Then sets THAT to point to that address then read the value at THAT[0]
+    push argument 0 
+    pop pointer 1
+    push that 0
+    pop local 0           
+
+// same as before but to local 1
+    push argument 0
+    pop pointer 1
+    push that 0
+    pop local 1
+
+// this moves the pointer to the next element by doing argu,ent 0 = argument 0 + 1
+    push argument 0 
+    push constant 1
+    add
+    pop argument 0
+
+
+    push argument 1
+    push constant 1
+    sub 
+    pop argument 1
+
+// starts looping through the elemnts left 
+    label LOOP
+
+// if the count > 0 continue the loop, anything else stop the loop
+    push argument 1
+    push constant 0
+    gt
+    if-goto CONTINUE
+    goto END
+
+label CONTINUE
+
+// This gets the current array value
+    push argument 0
+    pop pointer 1
+    push that 0
+
+// calling on the sys.min and sys.max function
+    push local 0
+    call Sys.min 2
+    pop local 0
+
+    push argument 0
+    pop pointer 1
+    push that 0
+
+    push local 1
+    call Sys.max 2
+    pop local 1
+
+// moving ont the next array element
+    push argument 0
+    push constant 1
+    add
+    pop argument 0
+
+    push argument 1
+    push constant 1
+    sub
+    pop argument 1
+
+    goto LOOP // repeat it
+
+    label END  // end of the loop
+
+// return the range of the array (max - min)
+    push local 1 
+    push local 0       // local 1 stores max, local 0 stores min
+    sub
+    return
+
+
+
+
+
 
 
 
