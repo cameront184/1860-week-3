@@ -93,13 +93,13 @@ label START
     push argument 0 
     push constant 1
     add
-    pop argument 0
+    pop local 2
 
 
     push argument 1
     push constant 1
     sub 
-    pop argument 1
+    pop local 3
 
 // starts looping through the elemnts left 
     label LOOP
