@@ -13,12 +13,12 @@ function Sys.min 0
     push argument 0
     push argument 1
     gt
-    if-goto ARG0_GREATER
+    if-goto MIN_ARG0_GREATER
 
     push argument 0         // if arg0 <= arg1 then we return arg0
     return
 
-label ARG0_GREATER
+label MAX_ARG0_GREATER
     push argument 1         // if arg0 > arg1 then return arg1
     return
 
@@ -39,12 +39,12 @@ function Sys.max 0
     push argument 0
     push argument 1
     gt
-    if-goto ARG0_GREATER
+    if-goto MAX_ARG0_GREATER
 
     push argument 1
     return
                                   // just flipped the returns
-label ARG0_GREATER
+label MAX_ARG0_GREATER
     push argument 0
     return
 
